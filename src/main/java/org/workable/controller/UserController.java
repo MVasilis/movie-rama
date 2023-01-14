@@ -19,6 +19,7 @@ import static org.workable.common.Constant.*;
 /**
  * This is user controller
  */
+//@RestController("/users")
 @Controller
 @RequestMapping("/users")
 public class UserController {
@@ -43,7 +44,8 @@ public class UserController {
 		user.setPassword(encodedPassword);
 
 		userService.save(user);
-		
+
+		//ResponseEntity.ok().body("{Body}");
 		return REGISTER_SUCCESS_PAGE;
 	}
 	
@@ -51,7 +53,8 @@ public class UserController {
 	public String listUsers(Model model) {
 		List<UserDTO> listUsers = userService.retrieveAllUsers();
 		model.addAttribute(USERS_ATTRIBUTE_LIST, listUsers);
-		
+
+		//ResponseEntity.ok().body("{Body}");
 		return USER_PAGE;
 	}
 }

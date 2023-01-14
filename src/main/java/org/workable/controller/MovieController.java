@@ -36,6 +36,7 @@ public class MovieController {
         List<MovieDTO> movies = movieService.retrieveAll(page, size, sortBy, sorting);
         model.addAttribute(MOVIES_LIST_ATTRIBUTE, movies);
 
+        //ResponseEntity.ok().body("{Body}");
         return MOVIES_PAGE;
     }
 
@@ -43,6 +44,7 @@ public class MovieController {
     public String showAddMovieForm(Model model) {
         model.addAttribute(MOVIE_ATTRIBUTE, new Movie());
 
+        //ResponseEntity.ok().body("{Body}");
         return MOVIE_FORM_PAGE;
     }
 
@@ -51,6 +53,7 @@ public class MovieController {
         movieService.saveMovie(movie);
         List<MovieDTO> movies = movieService.retrieveAll(0, 3, null, null);
         model.addAttribute(MOVIES_LIST_ATTRIBUTE, movies);
+        //ResponseEntity.ok().body("{Body}");
         return MOVIES_PAGE;
     }
 
@@ -61,6 +64,7 @@ public class MovieController {
         movieReviewService.addMovieReview(movieId, userReview);
         List<MovieDTO> movies = movieService.retrieveAll(0, 3, null, null);
         model.addAttribute(MOVIES_LIST_ATTRIBUTE, movies);
+        //ResponseEntity.ok().body("{Body}");
         return MOVIES_PAGE;
     }
 
@@ -70,6 +74,7 @@ public class MovieController {
         List<MovieDTO> movies = movieService.findAllByUserId(userId);
         model.addAttribute(MOVIES_LIST_ATTRIBUTE, movies);
 
+        //ResponseEntity.ok().body("{Body}");
         return MOVIES_PAGE;
     }
 }
