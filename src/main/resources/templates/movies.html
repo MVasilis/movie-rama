@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="ISO-8859-1">
+    <title>List Users</title>
+    <link rel="stylesheet" type="text/css" href="/webjars/bootstrap/css/bootstrap.min.css" />
+    <script type="text/javascript" src="/webjars/jquery/jquery.min.js"></script>
+    <script type="text/javascript" src="/webjars/bootstrap/js/bootstrap.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+</head>
+<script>
+$(document).ready(function() {
+  $(".likeButton").click(function() {
+    var tr = $(this).closest('tr');
+    var movieId=$(this).closest('tr').children('td:first').text();
+    var url = "/movies/" +movieId+ "/review?userReview=like";
+
+	    $.ajax({
+        url: url,
+        type: "POST",
+        success: function () {
+            //some code here
+        }
+    });
+    window.location.reload();
+  });
+});
+
+$(document).ready(function() {
+  $(".hateButton").click(function() {
+    var tr = $(this).closest('tr');
+    var movieId=$(this).closest('tr').children('td:first').text();
+	var url = "/movies/" +movieId+ "/review?userReview=hate";
+
+	    $.ajax({
+        url: url,
+        type: "POST",
+        success: function () {
+            //some code here
+        }
+    });
+    window.location.reload();
+  });
+});
+</script>
+<body>
+<div class="container text-center">
+    <div>
+        <div style="margin-left: auto;margin-right: 0;">
+            <p style="float: right;"><a th:href="@{/users}">List of Users</a></p>
+        </div>
+        <form th:action="@{/logout}" method="post">
+            <p style="float: right;">
+                Welcome <b>[[${#request.userPrincipal.principal.fullName}]]</b>
+            </p>
+            <input style="float: right;" type="submit" value="Sign Out" />
+        </form>
+    </div>
+    <div>
+        <h1>List of Movies</h1>
+    </div>
+
+    <div>
+        <p style="float: left;">Sort By : </p>
+        <button style="float: left;"><a th:href="@{/movies?sortBy=likes}">Likes </a></button>
+        <button style="float: left;"><a th:href="@{/movies?sortBy=hates}">Hates </a></button>
+        <button style="float: left;"><a th:href="@{/movies?sortBy=date}">Date </a></button>
+
+        <button style="float: right;"><a th:href="@{/movies/form}">Add new movie</a></button>
+        <table class="table table-striped table-bordered">
+            <thead class="thead-dark">
+            <tr>
+                <th>id</th>
+                <th>Movie Title</th>
+                <th>Description</th>
+                <th>Publication Date</th>
+                <th>Name of User</th>
+                <th>Likes</th>
+                <th>Hates</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr th:each="movie: ${movies}">
+                <td th:text="${movie.id}">id</td>
+                <td th:text="${movie.movieTitle}">Title</td>
+                <td th:text="${movie.movieDescription}">Description</td>
+                <td th:text="${movie.publicationDate}">Publication Date</td>
+                <td>
+                    <a th:href="@{/movies/{id}(id=${movie.addedBy.id})}" th:text="${movie.nameOfUser}"/>
+                </td>
+                <td th:text="${movie.likes}">Likes</td>
+                <td th:text="${movie.hates}">Hates</td>
+                <td>
+                    <button class="likeButton">Like</button>
+                    <button class="hateButton">Hate</button>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
+</body>
+</html>
