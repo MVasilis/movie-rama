@@ -11,6 +11,7 @@ After the succeess of the build, you can run the application by :
 
 Because we use SpringBoot and H2 database, Application has an embeded tomcat and DB. 
 This means that the application will run without any issue.
+to have access in the DB while the application is running, using a browser please go to -> localhost:port/h2-console   No password is needed.
 In the property file, the port has been configured as 8081. (you can change it by going at application.properties)
 Also at the application.properties we are keeping the configuration for H2 embeded DataBase. 
 
