@@ -26,3 +26,8 @@ mvn package
 The jar will be created inside the target directory. 
 To run this jar file, through the command line, navigate to the directory where the jar file exists. 
 Run command -> java -jar (file_name).jar
+
+- In the path movie-rama/executable 
+  we can find an executable with file name "MovieRama-1.0.jar". we can download it and run it in a machine with Java 11 installed.
+  run command -> java -jar MovieRama-1.0.jar    port:8081
+  DB url   localhost:8081/h2-console
