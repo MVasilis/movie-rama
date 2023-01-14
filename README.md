@@ -13,3 +13,10 @@ Because we use SpringBoot and H2 database, Application has an embeded tomcat and
 This means that the application will run without any issue.
 In the property file, the port has been configured as 8081. (you can change it by going at application.properties)
 Also at the application.properties we are keeping the configuration for H2 embeded DataBase. 
+
+How to create a running Jar.
+After building project, in the terminal and in the project root you need to run command
+mvn package 
+The jar will be created inside the target directory. 
+To run this jar file, through the command line, navigate to the directory where the jar file exists. 
+Run command -> java -jar (file_name).jar
