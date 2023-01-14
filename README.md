@@ -3,8 +3,8 @@ For this project the technologies and libraries that I have used are:
 Java 11, Maven 3.6.2, SpringBoot, SpringData, SpringSecurity, H2 embeded database, MapStruct, Junit, Mockito, Lombok
 
 
-- Clarification
-  In the Controllers I have used @Controller so I could use Model, to communicate with the UI. I a production ready application, where BE is communicating with a client Side application, we would use  @RestController  and the endPoints would return ResponseEntity for a Json response. 
+- Important Clarification
+-  In the Controllers I have used @Controller so I could use Model, to communicate with the UI. I a production ready application, where BE is communicating with a client Side application, we would use  @RestController  and the endPoints would return ResponseEntity for a Json response. 
 
 
 To build this project, you need to have installed in your PC Java 11 and Maven 3.6.2.
